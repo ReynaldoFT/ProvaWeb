@@ -1,0 +1,33 @@
+create database bd_aula;
+use bd_aula;
+
+create table usuarios(id int primary key auto_increment,
+userName varchar(120),
+userPass varchar(120));
+
+insert into usuarios(userName, userPass) value ('admin', 'admin');
+alter table usuarios add column isExcluido boolean default false;
+alter table usuarios add column nome varchar(120);
+alter table usuarios add column celular varchar(20);
+
+create table clientes(id int primary key auto_increment,
+nome varchar(120),
+telefone varchar(120),
+email varchar(120),
+dataNasc datetime);
+alter table clientes add column isExcluido boolean default false;
+
+create table vendedor (id int primary key auto_increment,
+nome varchar(120),
+cpf varchar(120),
+dataNasc datetime); 
+alter table vendedor add column isExcluido boolean default false;
+
+create table marcas (id int primary key auto_increment,
+nome varchar(100));
+alter table marcas add column isExcluido boolean default false;
+
+create table produtos (id int primary key auto_increment,
+nome varchar(100),
+quantidade int);
+alter table produtos add column isExcluido boolean default false;
