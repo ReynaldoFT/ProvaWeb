@@ -1,0 +1,30 @@
+﻿@model WebApplication1.Models.Produto
+
+@{
+    ViewBag.Title = "NovoProduto";
+}
+
+<h2>NovoProduto</h2>
+
+@using (Html.BeginForm("SalvarProduto", "Produto", FormMethod.Post))
+{
+    <div class="form-horizontal">
+        <h4>Produto</h4>
+        <hr />
+
+
+        @Html.Partial("_FrmProduto")
+
+        <br />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salvar" class="btn btn-dark" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

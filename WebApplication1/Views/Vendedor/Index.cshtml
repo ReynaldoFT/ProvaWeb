@@ -1,0 +1,66 @@
+﻿@model WebApplication1.Models.Vendedor
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm("Index", "Vendedor"))
+{
+    <div class="row">
+        <div class="col-8">
+            @Html.LabelFor(model => model.Nome)
+            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control col-12" } })
+        </div>
+    </div>
+    <br />
+    <input type="submit" value="Pesquisar" class="btn btn-dark" />
+}
+
+<br />
+
+
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Incluir novo vendedor", "NovoVendedor")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNasc)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (ViewBag.ListaVendedor != null)
+    {
+        foreach (var item in ViewBag.ListaVendedor)
+        {
+            <tr>
+                <td>
+                    @Html.Raw(item.Nome)
+                </td>
+                <td>
+                    @Html.Raw(item.Cpf)
+                </td>
+                <td>
+                    @Html.Raw(item.DataNasc)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    }
+
+
+</table>

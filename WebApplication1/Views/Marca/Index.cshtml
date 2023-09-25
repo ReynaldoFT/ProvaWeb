@@ -1,0 +1,53 @@
+﻿@model WebApplication1.Models.Marca
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm("Index", "Marca"))
+{
+    <div class="row">
+        <div class="col-8">
+            @Html.LabelFor(model => model.Nome)
+            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control col-12" } })
+        </div>
+    </div>
+    <br />
+    <input type="submit" value="Pesquisar" class="btn btn-dark" />
+}
+
+<br />
+
+
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Incluir nova Marca", "NovoMarca")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+    </tr>
+
+    @if (ViewBag.ListaMarca != null)
+    {
+        foreach (var item in ViewBag.ListaMarca)
+        {
+            <tr>
+                <td>
+                    @Html.Raw(item.Nome)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    }
+
+
+</table>

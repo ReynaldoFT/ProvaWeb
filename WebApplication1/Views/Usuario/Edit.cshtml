@@ -1,0 +1,35 @@
+﻿@model WebApplication1.Models.Usuario
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Editar Usuário</h2>
+
+@using (Html.BeginForm("SalvarAlteracoes", "Usuario", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Usuario</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+
+    @*CARREGA DA VIEW PARCIAL*@
+
+    @Html.Partial("_FrmUsuario")
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
